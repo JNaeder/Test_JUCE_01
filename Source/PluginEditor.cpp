@@ -13,9 +13,12 @@
 Test_JUCE_01AudioProcessorEditor::Test_JUCE_01AudioProcessorEditor (Test_JUCE_01AudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
-    setSize (400, 300);
+    gainSlider.setSliderStyle(juce::Slider::SliderStyle::LinearVertical);
+    gainSlider.setRange(0.0, 1.0, 0.01);
+    gainSlider.setValue(0.5);
+    gainSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, true, 50, 20);
+    addAndMakeVisible(gainSlider);
+    setSize (200, 300);
 }
 
 Test_JUCE_01AudioProcessorEditor::~Test_JUCE_01AudioProcessorEditor()
@@ -25,16 +28,10 @@ Test_JUCE_01AudioProcessorEditor::~Test_JUCE_01AudioProcessorEditor()
 //==============================================================================
 void Test_JUCE_01AudioProcessorEditor::paint (juce::Graphics& g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
-
-    g.setColour (juce::Colours::white);
-    g.setFont (15.0f);
-    g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
+    g.fillAll(juce::Colours::black);
 }
 
 void Test_JUCE_01AudioProcessorEditor::resized()
 {
-    // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
+    gainSlider.setBounds(getWidth()/2 - 50, getHeight()/2 - 75, 100, 150);
 }
