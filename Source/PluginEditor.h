@@ -14,7 +14,8 @@
 //==============================================================================
 /**
 */
-class Test_JUCE_01AudioProcessorEditor  : public juce::AudioProcessorEditor
+class Test_JUCE_01AudioProcessorEditor  : public juce::AudioProcessorEditor, 
+                                          public juce::Slider::Listener
 {
 public:
     Test_JUCE_01AudioProcessorEditor (Test_JUCE_01AudioProcessor&);
@@ -23,6 +24,8 @@ public:
     //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
+
+    void sliderValueChanged (juce::Slider* slider) override;
 
 private:
     
