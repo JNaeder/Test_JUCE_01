@@ -144,7 +144,7 @@ void Test_JUCE_01AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
 
         for(int sample = 0; sample < buffer.getNumSamples(); ++sample)
         {
-            channelData[sample] = channelData[sample] * 0.1;
+            channelData[sample] = channelData[sample] * 5;
         }
     }
 }
