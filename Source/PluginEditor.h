@@ -30,6 +30,7 @@ public:
 private:
     
     juce::Slider gainSlider;
+    juce::Slider overdriveSlider;
     Test_JUCE_01AudioProcessor& audioProcessor;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Test_JUCE_01AudioProcessorEditor)
